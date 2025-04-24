@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:58:27 by manon             #+#    #+#             */
-/*   Updated: 2025/04/23 15:08:57 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/24 21:10:40 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,24 @@ static int check_args(int argc, char **argv)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+static void init_struct_attributes(t_game *game)
 {
-	t_game	game;
+	ft_bzero(&game->map, sizeof(t_map));
+	ft_bzero(&game->edge, sizeof(t_img));
+	ft_bzero(&game->edge_corner, sizeof(t_img));
+	ft_bzero(&game->coral, sizeof(t_img));
+	ft_bzero(&game->water, sizeof(t_img));
+	ft_bzero(&game->fish, sizeof(t_img));
+	ft_bzero(&game->bridge, sizeof(t_img));
+	ft_bzero(&game->fisherman, sizeof(t_img));
+	ft_bzero(&game->sumo, sizeof(t_img));
+}
 
+int main(int argc, char **argv)
+{
+	t_game game;
+
+	init_struct_attributes(&game);
 	if (!check_args(argc, argv))
 		return (1);
 	game.map = init_map();
@@ -41,6 +55,7 @@ int	main(int argc, char **argv)
 		return (free_map(game.map), ft_printf("[Erreur : initialisation graphique]\n"), 1);
 	render_map(&game);
 	mlx_key_hook(game.win_ptr, key_hook, &game);
+	mlx_hook(game.win_ptr, 17, 0L, close_window, &game);
 	mlx_loop(game.mlx_ptr);
 	free_map(game.map);
 	return (0);

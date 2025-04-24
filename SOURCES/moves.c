@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:07:56 by manon             #+#    #+#             */
-/*   Updated: 2025/04/21 17:37:38 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/24 20:02:57 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_moves(int moves)
 int check_moves(t_game *game, t_point new_pos)
 {
     char tile = game->map->data[new_pos.y][new_pos.x];
-    if (tile == '1')
+    if (tile == '1' || (tile == 'E' && game->map->count_fish != 0))
         return (0);
     if (tile == 'C')
         game->map->count_fish--;

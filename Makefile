@@ -2,7 +2,7 @@ NAME = so_long
 
 INCDIR = INCLUDES
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(INCDIR)/minilibx-linux
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I /minilibx-linux
 SRCS =	SOURCES/flood_fill.c \
 		SOURCES/init.c \
 		SOURCES/input.c \
@@ -16,10 +16,10 @@ SRCS =	SOURCES/flood_fill.c \
 OBJS = $(SRCS:.c=.o)
 
 # Librairies
-LIBFT_DIR = INCLUDES/libft
-PRINTF_DIR = INCLUDES/ft_printf
-GNL_DIR = INCLUDES/get_next_line
-MLX_DIR = INCLUDES/minilibx-linux
+LIBFT_DIR = libft
+PRINTF_DIR = ft_printf
+GNL_DIR = get_next_line
+MLX_DIR = minilibx-linux
 
 LIBFT_A = $(LIBFT_DIR)/libft.a
 PRINTF_A = $(PRINTF_DIR)/ft_printf.a

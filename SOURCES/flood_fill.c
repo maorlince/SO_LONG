@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:05:31 by manon             #+#    #+#             */
-/*   Updated: 2025/04/21 17:17:21 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/24 19:58:02 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	**copy_map(char **data, int height)
 	{
 		copy[i] = ft_strdup(data[i]);
 		if (!copy[i])
-			return (NULL); // Pas clean, faudra free ce qu’on peut
+			return (NULL); // Pas clean
 		i++;
 	}
 	copy[i] = NULL;
@@ -61,7 +61,7 @@ int	validate_path(t_map *map)
 		x = 0;
 		while (copy[y][x])
 		{
-			if (copy[y][x] == 'C' || copy[y][x] == 'E')
+			if (copy[y][x] == 'C')
 				return (free_copy(copy), 0);
 			x++;
 		}
