@@ -6,52 +6,53 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:03:43 by manon             #+#    #+#             */
-/*   Updated: 2025/04/23 15:06:55 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/26 10:49:18 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void count(t_map *map)
+void	count(t_map *map)
 {
-	int i = 0;
-	int j; 
-	
+	int	i;
+	int	j;
+
 	j = 0;
-	while(map->data[j])
+	while (map->data[j])
 	{
 		i = 0;
-		while(map->data[j][i])
+		while (map->data[j][i])
 		{
 			if (map->data[j][i] == 'C')
-			map->count_fish++;
+				map->count_fish++;
 			if (map->data[j][i] == 'E')
-			map->count_exit++;
+				map->count_exit++;
 			if (map->data[j][i] == 'P')
 			{
 				map->count_fisherman++;
 				map->fisherman_pos.x = i;
-                map->fisherman_pos.y = j;
+				map->fisherman_pos.y = j;
 			}
 			if (map->data[j][i] == 'S')
-			map->count_sumo++;
+				map->count_maelstrom++;
 			i++;
 		}
 		j++;
 	}
 }
+
 //pour get_map
 //À séparer :
 //lecture (read_map_file.c)
 //split et parsing (parse_map.c)
 //et aussi vérifier les erreurs de ft_strdup, ft_strjoin, get_next_line.
 //renvoyer une erreur explicite (NULL ou code erreur).
-char **get_map(char *argv, t_map *map)
+char	**get_map(char *argv, t_map *map)
 {
-	char *stash;
-	char *tmp;
-	char *line;
-	int fd;
+	char	*stash;
+	char	*tmp;
+	char	*line;
+	int		fd;
 
 	stash = NULL;
 	fd = open(argv, O_RDONLY);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:05:31 by manon             #+#    #+#             */
-/*   Updated: 2025/04/24 19:58:02 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/04/26 10:39:48 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static char	**copy_map(char **data, int height)
 static void	fill(char **map, t_point size, t_point cur)
 {
 	if (cur.x < 0 || cur.y < 0 || cur.x >= size.x || cur.y >= size.y)
-		return;
+		return ;
 	if (map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == 'K')
-		return;
+		return ;
 	map[cur.y][cur.x] = 'K';
 	fill(map, size, (t_point){cur.x + 1, cur.y});
 	fill(map, size, (t_point){cur.x - 1, cur.y});

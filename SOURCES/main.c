@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:58:27 by manon             #+#    #+#             */
-/*   Updated: 2025/04/24 21:10:40 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/04/26 15:41:56 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int check_args(int argc, char **argv)
+static int	check_args(int argc, char **argv)
 {
 	if (argc != 2)
 		return (ft_printf("[Erreur : nombre d'arguments invalide]\n"), 0);
@@ -21,41 +21,44 @@ static int check_args(int argc, char **argv)
 	return (1);
 }
 
-static void init_struct_attributes(t_game *game)
+static void	init_struct_attributes(t_game *game)
 {
 	ft_bzero(&game->map, sizeof(t_map));
 	ft_bzero(&game->edge, sizeof(t_img));
 	ft_bzero(&game->edge_corner, sizeof(t_img));
 	ft_bzero(&game->coral, sizeof(t_img));
 	ft_bzero(&game->water, sizeof(t_img));
+	//ft_bzero(&game->water2, sizeof(t_img));!!!!!!!!!!!!!!!!!!!!!
 	ft_bzero(&game->fish, sizeof(t_img));
 	ft_bzero(&game->bridge, sizeof(t_img));
 	ft_bzero(&game->fisherman, sizeof(t_img));
-	ft_bzero(&game->sumo, sizeof(t_img));
+	ft_bzero(&game->maelstrom, sizeof(t_img));
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_game game;
+	t_game	game;
 
 	init_struct_attributes(&game);
+	game.last_update = 0;
 	if (!check_args(argc, argv))
 		return (1);
 	game.map = init_map();
 	if (!game.map)
 		return (ft_printf("[Erreur : allocation map échouée]\n"));
 	if (!get_map(argv[1], game.map))
-		return (free_map(game.map), ft_printf("[Erreur : lecture échouée]\n"), 1);
+		return (free_map(game.map), ft_printf("⚠️[Lecture échouée]\n"), 1);
 	count(game.map);
 	if (check_shape(game.map) || check_wall(game.map) || check_other(game.map))
 		return (free_map(game.map), 1);
 	if (!validate_path(game.map))
-		return (free_map(game.map), ft_printf("[Erreur : map non jouable]\n"), 1);
+		return (free_map(game.map), ft_printf("[⚠️Map non jouable]\n"), 1);
 	if (!init_images(&game))
-		return (free_map(game.map), ft_printf("[Erreur : initialisation graphique]\n"), 1);
+		return (free_map(game.map), ft_printf("[⚠️Initialisa° images]\n"), 1);
 	render_map(&game);
 	mlx_key_hook(game.win_ptr, key_hook, &game);
 	mlx_hook(game.win_ptr, 17, 0L, close_window, &game);
+	mlx_loop_hook(game.mlx_ptr, loop_hook, &game);
 	mlx_loop(game.mlx_ptr);
 	free_map(game.map);
 	return (0);

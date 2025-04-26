@@ -6,6 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I /minilibx-linux
 SRCS =	SOURCES/flood_fill.c \
 		SOURCES/init.c \
 		SOURCES/input.c \
+		SOURCES/maelstrom.c \
 		SOURCES/main.c \
 		SOURCES/map_checker.c \
 		SOURCES/map_loader.c \

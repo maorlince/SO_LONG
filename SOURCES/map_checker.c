@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:04:41 by manon             #+#    #+#             */
-/*   Updated: 2025/04/21 16:45:35 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/26 10:39:10 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 //changer les printf en 1 et afficher printf dans main.c (optionnel)
 
-int check_shape(t_map *map)
+int	check_shape(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 	int	size_line;
 
 	j = 0;
 	size_line = 0;
-	while(map->data[j])
+	while (map->data[j])
 	{
 		i = 0;
-		while(map->data[j][i])
+		while (map->data[j][i])
 			i++;
-		if(size_line == 0)
+		if (size_line == 0)
 			size_line = i;
 		if (size_line != i || size_line == 0)
-			return(ft_printf("[Erreur : map de taille invalide]\n"));
+			return (ft_printf("[Erreur : map de taille invalide]\n"));
 		j++;
 	}
 	map->width = size_line;
@@ -38,10 +38,10 @@ int check_shape(t_map *map)
 	return (0);
 }
 
-int check_wall(t_map *map)
+int	check_wall(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -66,10 +66,10 @@ int check_wall(t_map *map)
 int	check_other(t_map *map)
 {
 	if (map->count_fish < 1)
-		return(ft_printf("[Erreur : map avec collectibles invalides]\n"));
+		return (ft_printf("[Erreur : map avec collectibles invalides]\n"));
 	if (map->count_exit != 1)
-		return(ft_printf("[Erreur : map avec sortie invalide]\n"));
+		return (ft_printf("[Erreur : map avec sortie invalide]\n"));
 	if (map->count_fisherman != 1)
-		return(ft_printf("[Erreur : map avec nombre de pêcheurs invalide]\n"));
+		return (ft_printf("[Erreur : map avec nombre de pêcheurs invalide]\n"));
 	return (0);
 }
