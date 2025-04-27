@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:02:42 by manon             #+#    #+#             */
-/*   Updated: 2025/04/26 16:44:52 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/27 14:58:41 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,14 @@ int	init_images(t_game *game)
 	load_image(game, IMG_MAELSTROM, &game->maelstrom);
 	load_image(game, IMG_BRIDGE, &game->bridge);
 	load_image(game, IMG_CORAL, &game->coral);
-	load_image(game, IMG_EDGE, &game->edge);
-	load_image(game, IMG_EDGE_CORNER, &game->edge_corner);
+	load_image(game, IMG_EDGE1, &game->edge1);
+	load_image(game, IMG_EDGE2, &game->edge2);
+	load_image(game, IMG_EDGE3, &game->edge3);
+	load_image(game, IMG_EDGE4, &game->edge4);
+	load_image(game, IMG_EDGE_CORNER1, &game->edge_corner1);
+	load_image(game, IMG_EDGE_CORNER2, &game->edge_corner2);
+	load_image(game, IMG_EDGE_CORNER3, &game->edge_corner3);
+	load_image(game, IMG_EDGE_CORNER4, &game->edge_corner4);
 	load_image(game, IMG_WATER, &game->water);
 	load_image(game, IMG_WAVES, &game->waves);
 	game->moves = 0;

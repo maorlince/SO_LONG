@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:58:27 by manon             #+#    #+#             */
-/*   Updated: 2025/04/26 15:41:56 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/27 15:06:12 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,17 @@ static int	check_args(int argc, char **argv)
 static void	init_struct_attributes(t_game *game)
 {
 	ft_bzero(&game->map, sizeof(t_map));
-	ft_bzero(&game->edge, sizeof(t_img));
-	ft_bzero(&game->edge_corner, sizeof(t_img));
+	ft_bzero(&game->edge1, sizeof(t_img));
+	ft_bzero(&game->edge2, sizeof(t_img));
+	ft_bzero(&game->edge3, sizeof(t_img));
+	ft_bzero(&game->edge4, sizeof(t_img));
+	ft_bzero(&game->edge_corner1, sizeof(t_img));
+	ft_bzero(&game->edge_corner2, sizeof(t_img));
+	ft_bzero(&game->edge_corner3, sizeof(t_img));
+	ft_bzero(&game->edge_corner4, sizeof(t_img));
 	ft_bzero(&game->coral, sizeof(t_img));
 	ft_bzero(&game->water, sizeof(t_img));
-	//ft_bzero(&game->water2, sizeof(t_img));!!!!!!!!!!!!!!!!!!!!!
+	ft_bzero(&game->waves, sizeof(t_img));
 	ft_bzero(&game->fish, sizeof(t_img));
 	ft_bzero(&game->bridge, sizeof(t_img));
 	ft_bzero(&game->fisherman, sizeof(t_img));
