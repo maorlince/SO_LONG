@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:02:42 by manon             #+#    #+#             */
-/*   Updated: 2025/04/27 14:58:41 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/29 20:00:26 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	load_image(t_game *game, char *path, t_img *img)
 	img->ptr = mlx_xpm_file_to_image(game->mlx_ptr, path,
 			&img->width, &img->height);
 	if (!img->ptr)
-		ft_printf("[Erreur cannot load: %s\n]", path);
+		ft_printf("⚠️ [Chargement de %s impossible\n]", path);
 }
 
 int	init_images(t_game *game)

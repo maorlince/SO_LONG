@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:05:31 by manon             #+#    #+#             */
-/*   Updated: 2025/04/26 10:39:48 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/29 19:50:05 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static void	fill(char **map, t_point size, t_point cur)
 {
 	if (cur.x < 0 || cur.y < 0 || cur.x >= size.x || cur.y >= size.y)
 		return ;
-	if (map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == 'K')
+	if (map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == 'K' 
+		||map[cur.y][cur.x] == 'E' || map[cur.y][cur.x] == 'S')//heeeeereeeeeeeee
 		return ;
 	map[cur.y][cur.x] = 'K';
 	fill(map, size, (t_point){cur.x + 1, cur.y});

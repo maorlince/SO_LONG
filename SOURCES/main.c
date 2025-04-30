@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:58:27 by manon             #+#    #+#             */
-/*   Updated: 2025/04/27 15:06:12 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/30 16:14:48 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static int	check_args(int argc, char **argv)
 {
 	if (argc != 2)
-		return (ft_printf("[Erreur : nombre d'arguments invalide]\n"), 0);
+		return (ft_printf("⚠️ [Nombre d'arguments invalide]\n"), 0);
 	if (!ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])))
-		return (ft_printf("[Erreur : map au nom invalide]\n"), 0);
+		return (ft_printf("⚠️ [Nom de map invalide]\n"), 0);
 	return (1);
 }
 
@@ -51,16 +51,16 @@ int	main(int argc, char **argv)
 		return (1);
 	game.map = init_map();
 	if (!game.map)
-		return (ft_printf("[Erreur : allocation map échouée]\n"));
+		return (ft_printf("⚠️ [Allocation map échouée]\n"));
 	if (!get_map(argv[1], game.map))
-		return (free_map(game.map), ft_printf("⚠️[Lecture échouée]\n"), 1);
+		return (free_map(game.map), ft_printf("⚠️ [Lecture échouée]\n"), 1);
 	count(game.map);
 	if (check_shape(game.map) || check_wall(game.map) || check_other(game.map))
 		return (free_map(game.map), 1);
 	if (!validate_path(game.map))
-		return (free_map(game.map), ft_printf("[⚠️Map non jouable]\n"), 1);
+		return (free_map(game.map), ft_printf("⚠️ [Map non jouable]\n"), 1);
 	if (!init_images(&game))
-		return (free_map(game.map), ft_printf("[⚠️Initialisa° images]\n"), 1);
+		return (free_map(game.map), ft_printf("⚠️ [Initialisa° images]\n"), 1);
 	render_map(&game);
 	mlx_key_hook(game.win_ptr, key_hook, &game);
 	mlx_hook(game.win_ptr, 17, 0L, close_window, &game);

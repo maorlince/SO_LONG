@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 18:27:06 by manon             #+#    #+#             */
-/*   Updated: 2025/04/26 16:53:45 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/30 16:22:49 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	move_maelstrom(t_game *game, int x, int y)
 	else if (game->map->data[new_y][new_x] == PLAYER)
 	{
 		ft_printf("[GAME OVER] 🌀\n");
-		exit(0);
+		quit_game(game);
 	}
 	return ;
 }
@@ -75,16 +75,18 @@ unsigned long get_time(void)
 
 int loop_hook(t_game *game)
 {
-    unsigned long	current;
-
+	unsigned long	current;
 	current = get_time();
-    if (current - game->last_update >= 500) // 1s
-    {
-        search_maelstrom(game);
-        render_map(game);
-        game->last_update = current;
+
+	if (current - game->last_update >= 500) //demi seconde
+	{
+		search_maelstrom(game);
+		render_map(game);
+		game->last_update = current;
 		game->water_frame++;
-    }
-    return (0);
+		if (game->held_key)
+			key_hook(game->held_key, game);
+	}
+	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:07:56 by manon             #+#    #+#             */
-/*   Updated: 2025/04/26 14:46:58 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/30 15:28:20 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	check_moves(t_game *game, t_point new_pos)
 	if (tile == 'E' && game->map->count_fish == 0)
 	{
 		ft_printf("[STAGE FINISH] 🎣\n");
-		exit(0);
+		quit_game(game);
 	}	
 	if (tile == 'S')
 	{
 		ft_printf("[GAME OVER] 🌀\n");
-		exit(0);
+		quit_game(game);
 	}
 	game->moves++;
 	game->map->data[game->map->fisherman_pos.y]

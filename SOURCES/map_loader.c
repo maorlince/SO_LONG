@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:03:43 by manon             #+#    #+#             */
-/*   Updated: 2025/04/26 10:49:18 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/30 15:13:42 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,6 @@ void	count(t_map *map)
 	}
 }
 
-//pour get_map
-//À séparer :
-//lecture (read_map_file.c)
-//split et parsing (parse_map.c)
 //et aussi vérifier les erreurs de ft_strdup, ft_strjoin, get_next_line.
 //renvoyer une erreur explicite (NULL ou code erreur).
 char	**get_map(char *argv, t_map *map)
@@ -56,8 +52,8 @@ char	**get_map(char *argv, t_map *map)
 
 	stash = NULL;
 	fd = open(argv, O_RDONLY);
-	if (fd < 0)
-		return (ft_printf("[Erreur : fichier map vide]"), NULL);
+	if (fd < 0 || !fd)
+		return (ft_printf("⚠️ [Fichier map de taille invalide]"), NULL);
 	line = get_next_line(fd);
 	while (line)
 	{
