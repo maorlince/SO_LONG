@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:05:31 by manon             #+#    #+#             */
-/*   Updated: 2025/04/29 19:50:05 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/03 18:42:56 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	**copy_map(char **data, int height)
 	int		i;
 	char	**copy;
 
-	copy = malloc(sizeof(char *) * (height + 1));
+	copy = calloc(height + 1, sizeof(char *));
 	if (!copy)
 		return (NULL);
 	i = 0;
@@ -25,7 +25,7 @@ static char	**copy_map(char **data, int height)
 	{
 		copy[i] = ft_strdup(data[i]);
 		if (!copy[i])
-			return (NULL); // Pas clean
+			return (NULL);
 		i++;
 	}
 	copy[i] = NULL;
@@ -36,8 +36,8 @@ static void	fill(char **map, t_point size, t_point cur)
 {
 	if (cur.x < 0 || cur.y < 0 || cur.x >= size.x || cur.y >= size.y)
 		return ;
-	if (map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == 'K' 
-		||map[cur.y][cur.x] == 'E' || map[cur.y][cur.x] == 'S')//heeeeereeeeeeeee
+	if (map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == 'K'
+		|| map[cur.y][cur.x] == 'E' || map[cur.y][cur.x] == 'S')
 		return ;
 	map[cur.y][cur.x] = 'K';
 	fill(map, size, (t_point){cur.x + 1, cur.y});

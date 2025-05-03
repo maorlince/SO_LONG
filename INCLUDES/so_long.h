@@ -6,15 +6,14 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:58:29 by manon             #+#    #+#             */
-/*   Updated: 2025/04/30 16:33:39 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/03 18:58:19 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-//norme!!!!
-//add destroy_mlx destroy img a faire et valgrind
+//makefile obj?
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -94,11 +93,14 @@ typedef struct s_img
 // struc game
 typedef struct s_game
 {
+	t_point			add_pos[4];
 	int				held_key;
 	int				water_frame;
-	t_map			*map;
 	void			*mlx_ptr;
 	void			*win_ptr;
+	unsigned long	last_update;
+	int				moves;
+	t_map			*map;
 	t_img			edge1;
 	t_img			edge2;
 	t_img			edge3;
@@ -114,8 +116,6 @@ typedef struct s_game
 	t_img			bridge;
 	t_img			fisherman;
 	t_img			maelstrom;
-	int				moves;
-	unsigned long	last_update;
 }	t_game;
 
 // init.c
@@ -151,16 +151,26 @@ int				key_hook(int keycode, t_game *game);
 // utils.c
 void			free_copy(char **copy);
 int				close_window(t_game *game);
-void			display_moves(t_game *game);
 int				quit_game(t_game *game);
 
 // move.c
 int				check_moves(t_game *game, t_point new_pos);
+void			display_moves(t_game *game);
 
 //maelstrom.c
 void			search_maelstrom(t_game *game);
 void			move_maelstrom(t_game *game, int x, int y);
 unsigned long	get_time(void);
 int				loop_hook(t_game *game);
+
+//Cette erreur vient de la MiniLibX (sous Linux), pas de ton code.
+//Cela arrive car mlx_init() appelle XOpenDisplay, qui utilise une
+//structure interne contenant des bytes non initialisés (bug de libX11).
+//Ce n’est pas de ta faute. C’est un faux positif courant que 
+//tu peux ignorer en toute sécurité, sauf si :
+//Tu veux porter le projet sur Windows/macOS avec comportement 100 % 
+//prévisible (ce qui n’est pas requis à 42),
+//Tu veux une exécution 0-warning (dans ce cas, il faut patcher Xlib 
+//— ce n’est pas recommandé ici).
 
 #endif

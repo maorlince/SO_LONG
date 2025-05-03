@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:06:33 by manon             #+#    #+#             */
-/*   Updated: 2025/04/30 14:59:44 by manon            ###   ########.fr       */
+/*   Updated: 2025/04/30 19:05:26 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_edge(t_game *game, int x, int y)
 	else if (x == 0)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			game->edge3.ptr, x * IMG_SIZE, y * IMG_SIZE);
-	else if ( x == game->map->width - 1)
+	else if (x == game->map->width - 1)
 		mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,
 			game->edge4.ptr, x * IMG_SIZE, y * IMG_SIZE);
 }
@@ -100,7 +100,7 @@ void	render_map(t_game *game)
 	int	y;
 
 	y = 0;
-	if(!game->water_frame || game->water_frame == 1024)
+	if (!game->water_frame || game->water_frame == 1024)
 		game->water_frame = 1;
 	while (game->map->data[y])
 	{

@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:58:27 by manon             #+#    #+#             */
-/*   Updated: 2025/04/30 16:14:48 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/03 18:49:48 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,15 @@ static int	check_args(int argc, char **argv)
 	return (1);
 }
 
+
 static void	init_struct_attributes(t_game *game)
 {
+	game->held_key = 0;
+	game->water_frame = 0;
+	game->mlx_ptr = 0;
+	game->win_ptr = 0;
+	game->last_update = 0;
+	game->moves = 0;
 	ft_bzero(&game->map, sizeof(t_map));
 	ft_bzero(&game->edge1, sizeof(t_img));
 	ft_bzero(&game->edge2, sizeof(t_img));
@@ -41,14 +48,27 @@ static void	init_struct_attributes(t_game *game)
 	ft_bzero(&game->maelstrom, sizeof(t_img));
 }
 
+void 	init_add_pos(t_game *game)
+{
+	game->add_pos[0].x = 1;
+	game->add_pos[0].y = 0;
+	game->add_pos[1].x = 0;
+	game->add_pos[1].y = 1;
+	game->add_pos[2].x = -1;
+	game->add_pos[2].y = 0;
+	game->add_pos[3].x = 0;
+	game->add_pos[3].y = -1;
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	init_struct_attributes(&game);
-	game.last_update = 0;
 	if (!check_args(argc, argv))
 		return (1);
+	init_add_pos(&game);
+	init_struct_attributes(&game);
+	game.last_update = 0;
 	game.map = init_map();
 	if (!game.map)
 		return (ft_printf("⚠️ [Allocation map échouée]\n"));
@@ -67,5 +87,4 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(game.mlx_ptr, loop_hook, &game);
 	mlx_loop(game.mlx_ptr);
 	free_map(game.map);
-	return (0);
 }

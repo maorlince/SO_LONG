@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:02:42 by manon             #+#    #+#             */
-/*   Updated: 2025/04/29 20:00:26 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/03 18:42:09 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_map	*init_map(void)
 {
 	t_map	*map;
 
-	map = malloc(sizeof(t_map));
+	map = calloc(1, sizeof(t_map));
 	if (!map)
 		return (NULL);
 	map->data = NULL;
@@ -26,6 +26,8 @@ t_map	*init_map(void)
 	map->count_exit = 0;
 	map->count_fisherman = 0;
 	map->count_maelstrom = 0;
+	map->fisherman_pos.x = 0;
+	map->fisherman_pos.y = 0;
 	return (map);
 }
 
