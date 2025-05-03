@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:04:41 by manon             #+#    #+#             */
-/*   Updated: 2025/04/30 15:11:03 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/03 20:47:22 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_shape(t_map *map)
 		if (size_line != i || size_line == 0)
 			return (ft_printf("⚠️ [Map de taille/forme invalide]\n"));
 		j++;
-		if (i > 35 || j > 25)
+		if (i > 45 || j > 25)
 			return (ft_printf("⚠️ [Map de taille trop importante]\n"));
 	}
 	map->width = size_line;
