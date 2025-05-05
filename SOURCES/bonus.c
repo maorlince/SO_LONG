@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 20:27:52 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 11:57:01 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 12:30:41 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@ void	init_black_tile(t_game *game)
 	int		*data;
 	int		x;
 	int		y;
-	int		bpp;
 	int		size_line;
-	int		endian;
 
 	game->black_tile.ptr = mlx_new_image(game->mlx_ptr, IMG_SIZE, IMG_SIZE);
 	if (!game->black_tile.ptr)
 		return ;
-	data = (int *)mlx_get_data_addr(game->black_tile.ptr, &bpp,
-			&size_line, &endian);
+	data = (int *)mlx_get_data_addr(game->black_tile.ptr, &y,
+			&size_line, &x);
 	y = 0;
 	while (y < IMG_SIZE)
 	{

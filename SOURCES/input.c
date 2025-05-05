@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:07:27 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 00:11:30 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 12:23:13 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	key_hook(int keycode, t_game *game)
 		close_window(game);
 	game->held_key = keycode;
 	new_pos = game->map->fisherman_pos;
-	if (keycode == KEY_y || keycode == KEY_Y)
+	if (keycode == KEY_YY || keycode == KEY_Y)
 		game->lvl = 'Y';
-	else if (keycode == KEY_q || keycode == KEY_Q)
+	else if (keycode == KEY_QQ || keycode == KEY_Q)
 		game->lvl = 'Q';
 	else if ((keycode == KEY_W) || (keycode == KEY_UP))
 		new_pos.y -= 1;

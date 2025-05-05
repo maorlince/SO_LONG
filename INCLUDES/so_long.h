@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:58:29 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 11:24:14 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 12:27:26 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 # define IMG_SIZE 32
 
 // KEYBOARD_MOVES
-# define KEY_q 113
+# define KEY_QQ 113
 # define KEY_Q 81
-# define KEY_y 121
+# define KEY_YY 121
 # define KEY_Y 89
 # define KEY_ESC 65307
 # define KEY_W 119
