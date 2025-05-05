@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:07:56 by manon             #+#    #+#             */
-/*   Updated: 2025/05/03 13:04:23 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/04 20:59:53 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	display_moves(t_game *game)
 
 	number = ft_itoa(game->moves);
 	str = ft_strjoin("Moves : ", number);
-	mlx_string_put(game->mlx_ptr, game->win_ptr, 10, 10, 0xFFFFFF, str);
+	mlx_string_put(game->mlx_ptr, game->win_ptr, 50, 13, 0xFFFFFF, str);
 	free(number);
 	free(str);
 }

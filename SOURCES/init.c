@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:02:42 by manon             #+#    #+#             */
-/*   Updated: 2025/05/03 19:44:22 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/05 12:19:47 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	init_images(t_game *game)
 			game->map->height * IMG_SIZE, "So_long");
 	if (!game->win_ptr)
 		return (0);
+	song(game);
 	load_image(game, IMG_FISHERMAN, &game->fisherman);
 	load_image(game, IMG_FISH, &game->fish);
 	load_image(game, IMG_MAELSTROM, &game->maelstrom);
@@ -84,6 +85,5 @@ int	init_images(t_game *game)
 	load_image(game, IMG_EDGE_CORNER4, &game->edge_corner4);
 	load_image(game, IMG_WATER, &game->water);
 	load_image(game, IMG_WAVES, &game->waves);
-	game->moves = 0;
 	return (1);
 }

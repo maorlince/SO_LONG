@@ -10,6 +10,7 @@ SRCS =	SOURCES/flood_fill.c \
 		SOURCES/main.c \
 		SOURCES/map_checker.c \
 		SOURCES/map_loader.c \
+		SOURCES/bonus.c \
 		SOURCES/moves.c \
 		SOURCES/render.c \
 		SOURCES/utils.c

@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:06:33 by manon             #+#    #+#             */
-/*   Updated: 2025/04/30 19:05:26 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 11:52:09 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,12 @@ void	draw_walls(t_game *game, int x, int y)
 	char	tile;
 
 	tile = game->map->data[y][x];
-	if (tile == WALL)
+	if (game->lvl == 'Z' && (y > game->map->fisherman_pos.y + 3
+			|| y < game->map->fisherman_pos.y - 3
+			|| x > game->map->fisherman_pos.x + 3
+			|| x < game->map->fisherman_pos.x - 3))
+		draw_shadow(game, x, y);
+	else if (tile == WALL)
 	{
 		if ((y == 0 && x == 0) || (y == 0 && x == game->map->width - 1)
 			|| (y == game->map->height - 1 && x == 0)
@@ -113,4 +118,5 @@ void	render_map(t_game *game)
 		y++;
 	}
 	display_moves(game);
+	dark_mode(game);
 }

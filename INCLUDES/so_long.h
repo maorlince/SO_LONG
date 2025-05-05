@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:58:29 by manon             #+#    #+#             */
-/*   Updated: 2025/05/03 20:45:53 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/05 11:24:14 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 # define IMG_SIZE 32
 
 // KEYBOARD_MOVES
+# define KEY_q 113
+# define KEY_Q 81
+# define KEY_y 121
+# define KEY_Y 89
 # define KEY_ESC 65307
 # define KEY_W 119
 # define KEY_S 115
@@ -62,14 +66,12 @@
 # define IMG_WATER "TEXTURES/water.xpm"
 # define IMG_WAVES "TEXTURES/waves.xpm"
 
-// struc flood_fill
 typedef struct s_point
 {
 	int	x;
 	int	y;
 }	t_point;
 
-// struc map
 typedef struct s_map
 {
 	char	**data;
@@ -82,7 +84,6 @@ typedef struct s_map
 	t_point	fisherman_pos;
 }	t_map;
 
-// struct img
 typedef struct s_img
 {
 	int		height;
@@ -90,9 +91,9 @@ typedef struct s_img
 	void	*ptr;
 }	t_img;
 
-// struc game
 typedef struct s_game
 {
+	char			lvl;
 	t_point			add_pos[4];
 	int				held_key;
 	int				water_frame;
@@ -116,6 +117,7 @@ typedef struct s_game
 	t_img			bridge;
 	t_img			fisherman;
 	t_img			maelstrom;
+	t_img			black_tile;
 }	t_game;
 
 // init.c
@@ -138,6 +140,11 @@ int				validate_path(t_map *map);
 // static char	**copy_map(char **data, int height);
 // static void	fill(char **map, t_point size, t_point cur);
 
+//bonus.c
+void			init_black_tile(t_game *game);
+void			dark_mode(t_game *game);
+void			draw_shadow(t_game *game, int x, int y);
+
 // render.c
 void			draw_edge_corner(t_game *game, int x, int y);
 void			draw_edge(t_game *game, int x, int y);
@@ -153,6 +160,7 @@ int				close_window(t_game *game);
 void			free_copy(char **copy);
 void			supp_edge(t_game *game);
 void			quit_game(t_game *game);
+void			song(t_game *game);
 
 // move.c
 int				check_moves(t_game *game, t_point new_pos);
