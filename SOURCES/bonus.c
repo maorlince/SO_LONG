@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 20:27:52 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 12:30:41 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 18:00:23 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	end_mode(t_game *game)
 
 void	dark_mode(t_game *game)
 {
-	if (!game->black_tile.ptr)
-		init_black_tile(game);
 	if (game->lvl == 'f')
 		mlx_string_put(game->mlx_ptr, game->win_ptr, 390, 500,
 			0xFF0000, "Do u want some 🌶️ ? [Y/y]");
@@ -73,8 +71,6 @@ void	dark_mode(t_game *game)
 			0xFF0000, "   Good death Fisherman.");
 		mlx_string_put(game->mlx_ptr, game->win_ptr, 300, 350,
 			0xFF0000, "BWAHAHAHAHAHAHAHAHAHAHAHAHAHA");
-		//usleep(1000000);
-		//mlx_clear_window(game->mlx_ptr, game->win_ptr);
 	}
 	if (game->lvl == '7' && game->map->count_fish == 0)
 	{

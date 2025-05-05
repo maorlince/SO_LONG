@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:58:29 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 12:27:26 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 17:49:29 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ typedef struct s_game
 t_map			*init_map(void);
 void			free_map(t_map *map);
 int				init_images(t_game *game);
+//static void		loader(t_game *game);
 // static void	*load_image(void *mlx, char *path);
 
 // map_loader.c

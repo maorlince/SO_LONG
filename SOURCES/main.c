@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:58:27 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 16:51:41 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 18:00:40 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static void	init_struct_attributes(t_game *game)
 	game->mlx_ptr = 0;
 	game->win_ptr = 0;
 	game->last_update = 0;
-	//ft_bzero(&game, sizeof(t_game));
 	ft_bzero(&game->edge1, sizeof(t_img));
 	ft_bzero(&game->edge2, sizeof(t_img));
 	ft_bzero(&game->edge3, sizeof(t_img));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:02:42 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 12:19:47 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 18:00:31 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,8 @@ static void	load_image(t_game *game, char *path, t_img *img)
 		ft_printf("⚠️ [Chargement de %s impossible\n]", path);
 }
 
-int	init_images(t_game *game)
+static void	loader(t_game *game)
 {
-	game->mlx_ptr = mlx_init();
-	if (!game->mlx_ptr)
-		return (0);
-	game->win_ptr = mlx_new_window(game->mlx_ptr,
-			game->map->width * IMG_SIZE,
-			game->map->height * IMG_SIZE, "So_long");
-	if (!game->win_ptr)
-		return (0);
-	song(game);
 	load_image(game, IMG_FISHERMAN, &game->fisherman);
 	load_image(game, IMG_FISH, &game->fish);
 	load_image(game, IMG_MAELSTROM, &game->maelstrom);
@@ -85,5 +76,20 @@ int	init_images(t_game *game)
 	load_image(game, IMG_EDGE_CORNER4, &game->edge_corner4);
 	load_image(game, IMG_WATER, &game->water);
 	load_image(game, IMG_WAVES, &game->waves);
+}
+
+int	init_images(t_game *game)
+{
+	game->mlx_ptr = mlx_init();
+	if (!game->mlx_ptr)
+		return (0);
+	game->win_ptr = mlx_new_window(game->mlx_ptr,
+			game->map->width * IMG_SIZE,
+			game->map->height * IMG_SIZE, "So_long");
+	if (!game->win_ptr)
+		return (0);
+	song(game);
+	loader(game);
+	init_black_tile(game);
 	return (1);
 }
