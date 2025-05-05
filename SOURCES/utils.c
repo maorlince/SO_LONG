@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:08:24 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 12:20:53 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 17:01:32 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	free_copy(char **copy)
 int	close_window(t_game *game)
 {
 	system("pkill mpg123");
-	system("reset");
+	system("stty sane");
 	free_map(game->map);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	exit(0);
@@ -36,7 +36,7 @@ int	close_window(t_game *game)
 void	supp_edge(t_game *game)
 {
 	system("pkill mpg123");
-	system("reset");
+	system("stty sane");
 	if (game->edge_corner1.ptr)
 		mlx_destroy_image(game->mlx_ptr, game->edge_corner1.ptr);
 	if (game->edge_corner2.ptr)

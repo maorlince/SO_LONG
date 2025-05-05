@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:07:56 by manon             #+#    #+#             */
-/*   Updated: 2025/05/04 20:59:53 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 16:58:30 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ int	check_moves(t_game *game, t_point new_pos)
 		ft_printf("[GAME OVER] 🌀\n");
 		quit_game(game);
 	}
-	game->moves++;
 	game->map->data[game->map->fisherman_pos.y]
 	[game->map->fisherman_pos.x] = '0';
+	if (&game->map->fisherman_pos != &new_pos)
+		game->moves++;
 	game->map->fisherman_pos = new_pos;
 	game->map->data[new_pos.y][new_pos.x] = 'P';
 	return (1);

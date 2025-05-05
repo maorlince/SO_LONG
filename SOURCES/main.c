@@ -6,7 +6,7 @@
 /*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:58:27 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 12:15:59 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/05 16:51:41 by manon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	check_args(int argc, char **argv, t_game *game)
 
 	i = 0;
 	game->lvl = '0';
+	if (argc != 2)
+		return (ft_printf("⚠️ [Nombre d'arguments invalide]\n"), 0);
 	while (argv[1][i])
 	{
 		if (argv[1][i] > '0' && argv[1][i] < '9')
@@ -26,8 +28,6 @@ static int	check_args(int argc, char **argv, t_game *game)
 		if (argv[1][i] == 'f')
 			game->lvl = argv[1][i];
 	}
-	if (argc != 2)
-		return (ft_printf("⚠️ [Nombre d'arguments invalide]\n"), 0);
 	if (!ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])))
 		return (ft_printf("⚠️ [Nom de map invalide]\n"), 0);
 	return (1);
@@ -35,12 +35,13 @@ static int	check_args(int argc, char **argv, t_game *game)
 
 static void	init_struct_attributes(t_game *game)
 {
+	game->moves = 0;
 	game->held_key = 0;
 	game->water_frame = 0;
 	game->mlx_ptr = 0;
 	game->win_ptr = 0;
 	game->last_update = 0;
-	game->moves = 0;
+	//ft_bzero(&game, sizeof(t_game));
 	ft_bzero(&game->edge1, sizeof(t_img));
 	ft_bzero(&game->edge2, sizeof(t_img));
 	ft_bzero(&game->edge3, sizeof(t_img));
@@ -75,7 +76,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (!check_args(argc, argv, &game))
-		return (1);
+		exit(1);
 	init_add_pos(&game);
 	init_struct_attributes(&game);
 	game.last_update = 0;
