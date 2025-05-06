@@ -2,7 +2,7 @@ NAME = so_long
 
 INCDIR = INCLUDES
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I /minilibx-linux
+CFLAGS = -g3 -Wall -Wextra -Werror -I$(INCDIR) -I /minilibx-linux
 SRCS =	SOURCES/flood_fill.c \
 		SOURCES/init.c \
 		SOURCES/input.c \

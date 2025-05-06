@@ -6,7 +6,7 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:08:24 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 17:50:48 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:19:40 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,8 @@ void	free_copy(char **copy)
 
 int	close_window(t_game *game)
 {
-	system("pkill mpg123");
-	system("stty sane");
-	free_map(game->map);
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	exit(0);
+	quit_game(game);
+	return (1);
 }
 
 void	supp_edge(t_game *game)
