@@ -6,7 +6,7 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:58:27 by manon             #+#    #+#             */
-/*   Updated: 2025/05/06 14:15:29 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:01:52 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	init_struct_attributes(t_game *game)
 	ft_bzero(&game->bridge, sizeof(t_img));
 	ft_bzero(&game->fisherman, sizeof(t_img));
 	ft_bzero(&game->maelstrom, sizeof(t_img));
+	ft_bzero(&game->black_tile, sizeof(t_img));
 }
 
 void	init_add_pos(t_game *game)

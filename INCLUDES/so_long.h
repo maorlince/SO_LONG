@@ -6,7 +6,7 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:58:29 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 17:49:29 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/07 16:08:08 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ typedef struct s_point
 
 typedef struct s_map
 {
+	char	*stash;
+	char	*tmp;
+	char	*line;
 	char	**data;
 	int		width;
 	int		height;

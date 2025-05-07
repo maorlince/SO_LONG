@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_loader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:03:43 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 16:44:26 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/07 16:11:54 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,29 +43,28 @@ void	count(t_map *map)
 
 char	**get_map(char *argv, t_map *map)
 {
-	char	*stash;
-	char	*tmp;
-	char	*line;
 	int		fd;
 
-	stash = NULL;
+	map->stash = NULL;
 	fd = open(argv, O_RDONLY);
-	if (fd < 0 || !fd)
+	if (fd <= 0 || !fd)
 		return (ft_printf("⚠️ [Fichier map de taille invalide]\n"), NULL);
-	line = get_next_line(fd);
-	while (line)
+	map->line = get_next_line(fd);
+	if (map->line == NULL)
+		return (ft_printf("⚠️ [Fichier map vide]\n"), NULL);
+	while(map->line)
 	{
-		tmp = stash;
-		if (!stash)
-			stash = ft_strdup(line);
+		map->tmp = map->stash;
+		if (!map->stash)
+		map->stash = ft_strdup(map->line);
 		else
-			stash = ft_strjoin(stash, line);
-		free(tmp);
-		free(line);
-		line = get_next_line(fd);
+		map->stash = ft_strjoin(map->stash, map->line);
+		free(map->tmp);
+		free(map->line);
+		map->line = get_next_line(fd);
 	}
 	close(fd);
-	map->data = ft_split(stash, '\n');
-	free(stash);
+	map->data = ft_split(map->stash, '\n');
+	free(map->stash);
 	return (map->data);
 }
