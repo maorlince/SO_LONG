@@ -6,7 +6,7 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:58:29 by manon             #+#    #+#             */
-/*   Updated: 2025/05/07 16:08:08 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:25:23 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,9 @@ int				init_images(t_game *game);
 // static void	*load_image(void *mlx, char *path);
 
 // map_loader.c
-void			count(t_map *map);
+
+//static void	count_utils(t_game *game, char data)
+int				count(t_game *game);
 char			**get_map(char *argv, t_map *map);
 
 // map_checker.c

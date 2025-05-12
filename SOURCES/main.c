@@ -6,7 +6,7 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 15:58:27 by manon             #+#    #+#             */
-/*   Updated: 2025/05/07 16:01:52 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/12 17:38:52 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	main(int argc, char **argv)
 		return (ft_printf("⚠️ [Allocation map échouée]\n"));
 	if (!get_map(argv[1], game.map))
 		quit_game(&game);
-	count(game.map);
+	count(&game);
 	if (check_shape(game.map) || check_wall(game.map) || check_other(game.map))
 		return (free_map(game.map), 1);
 	if (!validate_path(game.map))

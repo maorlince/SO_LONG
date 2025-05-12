@@ -6,39 +6,51 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:03:43 by manon             #+#    #+#             */
-/*   Updated: 2025/05/07 16:11:54 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:53:28 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	count(t_map *map)
+static void	count_utils(t_game *game, char data)
+{
+	if (data == 'C')
+		game->map->count_fish++;
+	else if (data == 'E')
+		game->map->count_exit++;
+	else if (data == 'S')
+		game->map->count_maelstrom++;
+	else if (data != '0' && data != '1')
+		{
+			(ft_printf("⚠️ [Caractere invalide dans la map]\n"));
+			quit_game(game);
+		}
+}
+
+int	count(t_game *game)
 {
 	int	i;
 	int	j;
 
 	j = 0;
-	while (map->data[j])
+	while (game->map->data[j])
 	{
 		i = 0;
-		while (map->data[j][i])
+		while (game->map->data[j][i])
 		{
-			if (map->data[j][i] == 'C')
-				map->count_fish++;
-			if (map->data[j][i] == 'E')
-				map->count_exit++;
-			if (map->data[j][i] == 'P')
+			if (game->map->data[j][i] == 'P')
 			{
-				map->count_fisherman++;
-				map->fisherman_pos.x = i;
-				map->fisherman_pos.y = j;
+				game->map->count_fisherman++;
+				game->map->fisherman_pos.x = i;
+				game->map->fisherman_pos.y = j;
 			}
-			if (map->data[j][i] == 'S')
-				map->count_maelstrom++;
+			else
+				count_utils(game, game->map->data[j][i]);
 			i++;
 		}
 		j++;
 	}
+	return (0);
 }
 
 char	**get_map(char *argv, t_map *map)
@@ -52,7 +64,7 @@ char	**get_map(char *argv, t_map *map)
 	map->line = get_next_line(fd);
 	if (map->line == NULL)
 		return (ft_printf("⚠️ [Fichier map vide]\n"), NULL);
-	while(map->line)
+	while (map->line)
 	{
 		map->tmp = map->stash;
 		if (!map->stash)
