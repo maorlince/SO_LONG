@@ -6,7 +6,7 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:03:43 by manon             #+#    #+#             */
-/*   Updated: 2025/05/12 18:53:28 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:55:27 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static void	count_utils(t_game *game, char data)
 	else if (data == 'S')
 		game->map->count_maelstrom++;
 	else if (data != '0' && data != '1')
-		{
-			(ft_printf("⚠️ [Caractere invalide dans la map]\n"));
-			quit_game(game);
-		}
+	{
+		(ft_printf("⚠️ [Caractere invalide dans la map]\n"));
+		quit_game(game);
+	}
 }
 
 int	count(t_game *game)
