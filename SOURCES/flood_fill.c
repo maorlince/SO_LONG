@@ -6,7 +6,7 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:05:31 by manon             #+#    #+#             */
-/*   Updated: 2025/05/14 17:28:42 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:35:12 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,7 @@ int	validate_path(t_map *map)
 
 	copy = copy_map(map->data, map->height);
 	if (!copy || !validate_exit(map))
-	{
-		ft_printf("aie\n");
 		return (0);
-	}
 	fill(copy, (t_point){map->width, map->height}, map->fisherman_pos, 0);
 	y = 0;
 	while (copy[y])
@@ -92,10 +89,7 @@ int	validate_path(t_map *map)
 		while (copy[y][x])
 		{
 			if (copy[y][x] == 'C')
-			{
-				ft_printf("ouille\n");
 				return (free_copy(copy), 0);
-			}
 			x++;
 		}
 		y++;

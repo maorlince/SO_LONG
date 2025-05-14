@@ -6,7 +6,7 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:03:43 by manon             #+#    #+#             */
-/*   Updated: 2025/05/14 17:11:14 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:34:52 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	count_utils(t_game *game, char data)
 
 int	count(t_game *game)
 {
-	t_point pos;
+	t_point	pos;
 
 	pos.x = 0;
 	pos.y = 0;
