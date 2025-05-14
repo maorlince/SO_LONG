@@ -6,7 +6,7 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:02:42 by manon             #+#    #+#             */
-/*   Updated: 2025/05/05 18:00:31 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/14 15:18:13 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_map	*init_map(void)
 	map->count_maelstrom = 0;
 	map->fisherman_pos.x = 0;
 	map->fisherman_pos.y = 0;
+	map->bridge_pos.x = 0;
+	map->bridge_pos.y = 0;
 	return (map);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manon <manon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:05:31 by manon             #+#    #+#             */
-/*   Updated: 2025/05/03 18:42:56 by manon            ###   ########.fr       */
+/*   Updated: 2025/05/14 17:28:42 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,44 @@ static char	**copy_map(char **data, int height)
 	return (copy);
 }
 
-static void	fill(char **map, t_point size, t_point cur)
+static void	fill(char **map, t_point size, t_point cur, int n)
 {
 	if (cur.x < 0 || cur.y < 0 || cur.x >= size.x || cur.y >= size.y)
 		return ;
 	if (map[cur.y][cur.x] == '1' || map[cur.y][cur.x] == 'K'
-		|| map[cur.y][cur.x] == 'E' || map[cur.y][cur.x] == 'S')
+		|| (n != 1 && map[cur.y][cur.x] == 'E') || map[cur.y][cur.x] == 'S')
 		return ;
 	map[cur.y][cur.x] = 'K';
-	fill(map, size, (t_point){cur.x + 1, cur.y});
-	fill(map, size, (t_point){cur.x - 1, cur.y});
-	fill(map, size, (t_point){cur.x, cur.y + 1});
-	fill(map, size, (t_point){cur.x, cur.y - 1});
+	fill(map, size, (t_point){cur.x + 1, cur.y}, 0);
+	fill(map, size, (t_point){cur.x - 1, cur.y}, 0);
+	fill(map, size, (t_point){cur.x, cur.y + 1}, 0);
+	fill(map, size, (t_point){cur.x, cur.y - 1}, 0);
+}
+
+static int	validate_exit(t_map *map)
+{
+	char	**copy;
+	int		y;
+	int		x;
+
+	copy = copy_map(map->data, map->height);
+	if (!copy)
+		return (0);
+	fill(copy, (t_point){map->width, map->height}, map->bridge_pos, 1);
+	y = 0;
+	while (copy[y])
+	{
+		x = 0;
+		while (copy[y][x])
+		{
+			if (copy[y][x] == 'P')
+				return (free_copy(copy), 0);
+			x++;
+		}
+		y++;
+	}
+	free_copy(copy);
+	return (1);
 }
 
 int	validate_path(t_map *map)
@@ -53,9 +79,12 @@ int	validate_path(t_map *map)
 	int		x;
 
 	copy = copy_map(map->data, map->height);
-	if (!copy)
+	if (!copy || !validate_exit(map))
+	{
+		ft_printf("aie\n");
 		return (0);
-	fill(copy, (t_point){map->width, map->height}, map->fisherman_pos);
+	}
+	fill(copy, (t_point){map->width, map->height}, map->fisherman_pos, 0);
 	y = 0;
 	while (copy[y])
 	{
@@ -63,7 +92,10 @@ int	validate_path(t_map *map)
 		while (copy[y][x])
 		{
 			if (copy[y][x] == 'C')
+			{
+				ft_printf("ouille\n");
 				return (free_copy(copy), 0);
+			}
 			x++;
 		}
 		y++;

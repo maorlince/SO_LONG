@@ -6,14 +6,12 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 18:58:29 by manon             #+#    #+#             */
-/*   Updated: 2025/05/12 19:25:23 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:39:17 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-//makefile obj?
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -85,6 +83,7 @@ typedef struct s_map
 	int		count_fisherman;
 	int		count_maelstrom;
 	t_point	fisherman_pos;
+	t_point	bridge_pos;
 }	t_map;
 
 typedef struct s_img
