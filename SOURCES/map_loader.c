@@ -6,7 +6,7 @@
 /*   By: mlemerci <mlemerci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:03:43 by manon             #+#    #+#             */
-/*   Updated: 2025/05/14 18:16:12 by mlemerci         ###   ########.fr       */
+/*   Updated: 2025/05/14 18:19:48 by mlemerci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ char	**get_map(char *argv, t_map *map)
 			return (ft_printf("⚠️ [Ligne vide dans le fichier map]\n"), NULL);
 		map->tmp = map->stash;
 		if (!map->stash)
-			map->stash = ft_strdup(map->line);
+		map->stash = ft_strdup(map->line);
 		else
-			map->stash = ft_strjoin(map->stash, map->line);
+		map->stash = ft_strjoin(map->stash, map->line);
 		free(map->tmp);
 		free(map->line);
 		map->line = get_next_line(fd);
